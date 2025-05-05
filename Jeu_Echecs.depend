@@ -1,0 +1,158 @@
+# depslib dependency file v1.0
+1609608216 source:c:\users\lecom\desktop\projet c\jeu_echecs\interface.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<stdbool.h>
+	"interface.h"
+	"initialisation.h"
+	"mouvements.h"
+	"IA.h"
+	"transformation.h"
+
+1609607218 source:c:\users\lecom\desktop\projet c\jeu_echecs\initialisation.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<stdbool.h>
+	"initialisation.h"
+
+1609518010 source:c:\users\lecom\desktop\projet c\jeu_echecs\mouvements.c
+	<stdio.h>
+	<stdlib.h>
+	"mouvements.h"
+	"pieces.h"
+
+1607855691 source:c:\users\lecom\desktop\projet c\jeu_echecs\pieces.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+
+1606989720 source:c:\users\lecom\desktop\projet c\jeu_echecs\positions.c
+
+1608127259 source:c:\users\lecom\desktop\projet c\jeu_echecs\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"SDL2/SDL.h"
+	"interface.h"
+
+1609519135 c:\users\lecom\desktop\projet c\jeu_echecs\interface.h
+
+1609338455 c:\users\lecom\desktop\projet c\jeu_echecs\initialisation.h
+
+1607330024 source:c:\users\lecom\desktop\projet c\jeu_echecs\test.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"SDL2/SDL.h"
+	"SDL2/SDL_ttf.h"
+
+1607330079 c:\users\lecom\desktop\projet c\jeu_echecs\test.h
+
+1607959252 source:c:\users\lecom\desktop\projet c\jeu_echecs\etatechec.c
+	<stdio.h>
+	<stdlib.h>
+	"mouvements.h"
+
+1609345503 c:\users\lecom\desktop\projet c\jeu_echecs\mouvements.h
+
+1609517658 source:c:\users\lecom\desktop\projet c\jeu_echecs\transformation.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+	"transformation.h"
+	"pieces.h"
+
+1609517165 c:\users\lecom\desktop\projet c\jeu_echecs\transformation.h
+
+1608107471 c:\users\lecom\desktop\projet c\jeu_echecs\pieces.h
+
+1609607959 source:c:\users\lecom\desktop\projet c\jeu_echecs\ia.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+	"mouvements.h"
+	"pieces.h"
+	"IA.h"
+
+1609607465 c:\users\lecom\desktop\projet c\jeu_echecs\ia.h
+
+1609955292 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\initialisation.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<stdbool.h>
+	"initialisation.h"
+
+1609338455 c:\users\quentin lecomte\desktop\c\jeu_echecs\initialisation.h
+
+1609955355 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"SDL2/SDL.h"
+	"interface.h"
+
+1609519135 c:\users\quentin lecomte\desktop\c\jeu_echecs\interface.h
+
+1607855691 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\pieces.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+
+1609955725 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\transformation.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+	"transformation.h"
+	"pieces.h"
+
+1609955758 c:\users\quentin lecomte\desktop\c\jeu_echecs\transformation.h
+
+1608107471 c:\users\quentin lecomte\desktop\c\jeu_echecs\pieces.h
+
+1609955019 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\ia.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL2/SDL.h"
+	<stdbool.h>
+	"interface.h"
+	"mouvements.h"
+	"pieces.h"
+	"IA.h"
+
+1609345503 c:\users\quentin lecomte\desktop\c\jeu_echecs\mouvements.h
+
+1609607465 c:\users\quentin lecomte\desktop\c\jeu_echecs\ia.h
+
+1609954721 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\interface.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<stdbool.h>
+	"interface.h"
+	"initialisation.h"
+	"mouvements.h"
+	"IA.h"
+	"transformation.h"
+
+1609955180 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\mouvements.c
+	<stdio.h>
+	<stdlib.h>
+	"mouvements.h"
+	"pieces.h"
+
+1609955065 source:c:\users\quentin lecomte\desktop\c\jeu_echecs\etatechec.c
+	<stdio.h>
+	<stdlib.h>
+	"mouvements.h"
+	"etatechec.h"
+
+1609955232 c:\users\quentin lecomte\desktop\c\jeu_echecs\etatechec.h
+
