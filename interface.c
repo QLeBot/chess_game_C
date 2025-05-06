@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <stdbool.h>
 
 #include "interface.h"
@@ -9,7 +9,7 @@
 #include "IA.h"
 #include "transformation.h"
 
-void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture)//défaite
+void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture)//dï¿½faite
 {
     SDL_Window *window_defaite = NULL;
     SDL_Renderer *renderer_defaite = NULL;
@@ -17,7 +17,7 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
     renderer_defaite = SDL_CreateRenderer(window_defaite, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     SDL_Surface *image_defaite = NULL;
-    image_defaite = SDL_LoadBMP("Defaite.bmp");
+    image_defaite = SDL_LoadBMP("addons/images/Defaite.bmp");
 
     SDL_Rect rectagle_image_defaite = {0, 0, 500, 375};
     SDL_Texture* mon_image = SDL_CreateTextureFromSurface(renderer_defaite, image_defaite);
@@ -26,7 +26,7 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
     SDL_FreeSurface(image_defaite);
 
     SDL_Surface *image_recommencer = NULL;
-    image_recommencer = SDL_LoadBMP("Recommencer.bmp");
+    image_recommencer = SDL_LoadBMP("addons/images/Recommencer.bmp");
 
     SDL_Rect rect_recommencer = {50, 200, 400, 100};
     SDL_Texture* mon_image_R = SDL_CreateTextureFromSurface(renderer_defaite, image_recommencer);
@@ -36,7 +36,7 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
 
     SDL_RenderPresent(renderer_defaite);
 
-    //Boucle infinie jusqu'à fermeture
+    //Boucle infinie jusqu'ï¿½ fermeture
     SDL_Event eventsA;
     int continuer = 1;
     int x, y;
@@ -75,7 +75,7 @@ void victoire(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_
     renderer_victoire = SDL_CreateRenderer(window_victoire, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     SDL_Surface *image_victoire = NULL;
-    image_victoire = SDL_LoadBMP("Victoire.bmp");
+    image_victoire = SDL_LoadBMP("addons/images/Victoire.bmp");
 
     SDL_Rect rectagle_image_victoire = {0, 0, 500, 375};
     SDL_Texture* mon_image = SDL_CreateTextureFromSurface(renderer_victoire, image_victoire);
@@ -84,7 +84,7 @@ void victoire(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_
     SDL_FreeSurface(image_victoire);
 
     SDL_Surface *image_recommencer = NULL;
-    image_recommencer = SDL_LoadBMP("Recommencer.bmp");
+    image_recommencer = SDL_LoadBMP("addons/images/Recommencer.bmp");
 
     SDL_Rect rect_recommencer = {50, 200, 400, 100};
     SDL_Texture* mon_image_R = SDL_CreateTextureFromSurface(renderer_victoire, image_recommencer);
@@ -94,7 +94,7 @@ void victoire(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_
 
     SDL_RenderPresent(renderer_victoire);
 
-    //Boucle infinie jusqu'à fermeture
+    //Boucle infinie jusqu'ï¿½ fermeture
     SDL_Event eventsV;
     int continuer = 1;
     int x, y;
@@ -158,7 +158,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
     //printf(&plateau[0][0]);
 
     SDL_Surface *surface_abandon = NULL;
-    surface_abandon = SDL_LoadBMP("Abandonner.bmp");
+    surface_abandon = SDL_LoadBMP("addons/images/Abandonner.bmp");
 
     SDL_Color orange = {255, 127, 40, 255};
     SDL_Color gris_clair = {204, 209, 209, 255};
@@ -183,7 +183,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
     SDL_Rect rect_pieces_blanches_eliminees[4][4];
 
-    //Zones Pieces Eliminées
+    //Zones Pieces Eliminï¿½es
     //int g,h;
     for(int g=0; g < 4; g++)
     {
@@ -267,7 +267,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -1) //Pion noir
             {
                 SDL_Surface *surface_B_Pawn = NULL;
-                surface_B_Pawn = SDL_LoadBMP("B_Pawn.bmp");
+                surface_B_Pawn = SDL_LoadBMP("addons/pieces/B_Pawn.bmp");
                 SDL_Texture* B_Pawn = SDL_CreateTextureFromSurface(renderer, surface_B_Pawn);
                 SDL_RenderCopy(renderer, B_Pawn, NULL, &blocs[i][j]);
 
@@ -277,7 +277,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == 1)//Pion blanc
             {
                 SDL_Surface *surface_W_Pawn = NULL;
-                surface_W_Pawn = SDL_LoadBMP("W_Pawn.bmp");
+                surface_W_Pawn = SDL_LoadBMP("addons/pieces/W_Pawn.bmp");
                 SDL_Texture* W_Pawn = SDL_CreateTextureFromSurface(renderer, surface_W_Pawn);
                 SDL_RenderCopy(renderer, W_Pawn, NULL, &blocs[i][j]);
 
@@ -287,7 +287,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -2) //Fou noir
             {
                 SDL_Surface *surface_B_Bishop = NULL;
-                surface_B_Bishop = SDL_LoadBMP("B_Bishop.bmp");
+                surface_B_Bishop = SDL_LoadBMP("addons/pieces/B_Bishop.bmp");
                 SDL_Texture* B_Bishop = SDL_CreateTextureFromSurface(renderer, surface_B_Bishop);
                 SDL_RenderCopy(renderer, B_Bishop, NULL, &blocs[i][j]);
 
@@ -297,7 +297,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j]== 2)//Fou blanc
             {
                 SDL_Surface *surface_W_Bishop = NULL;
-                surface_W_Bishop = SDL_LoadBMP("W_Bishop.bmp");
+                surface_W_Bishop = SDL_LoadBMP("addons/pieces/W_Bishop.bmp");
                 SDL_Texture* W_Bishop = SDL_CreateTextureFromSurface(renderer, surface_W_Bishop);
                 SDL_RenderCopy(renderer, W_Bishop, NULL, &blocs[i][j]);
 
@@ -307,7 +307,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -3) //Cavalier noir
             {
                 SDL_Surface *surface_B_Knight = NULL;
-                surface_B_Knight = SDL_LoadBMP("B_Knight.bmp");
+                surface_B_Knight = SDL_LoadBMP("addons/pieces/B_Knight.bmp");
                 SDL_Texture* B_Knight = SDL_CreateTextureFromSurface(renderer, surface_B_Knight);
                 SDL_RenderCopy(renderer, B_Knight, NULL, &blocs[i][j]);
 
@@ -317,7 +317,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == 3)//Cavalier blanc
             {
                 SDL_Surface *surface_W_Knight = NULL;
-                surface_W_Knight = SDL_LoadBMP("W_Knight.bmp");
+                surface_W_Knight = SDL_LoadBMP("addons/pieces/W_Knight.bmp");
                 SDL_Texture* W_Knight = SDL_CreateTextureFromSurface(renderer, surface_W_Knight);
                 SDL_RenderCopy(renderer, W_Knight, NULL, &blocs[i][j]);
 
@@ -327,7 +327,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -4) //Tour noir
             {
                 SDL_Surface *surface_B_Rook = NULL;
-                surface_B_Rook = SDL_LoadBMP("B_Rook.bmp");
+                surface_B_Rook = SDL_LoadBMP("addons/pieces/B_Rook.bmp");
                 SDL_Texture* B_Rook = SDL_CreateTextureFromSurface(renderer, surface_B_Rook);
                 SDL_RenderCopy(renderer, B_Rook, NULL, &blocs[i][j]);
 
@@ -337,7 +337,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == 4)//Tour blanc
             {
                 SDL_Surface *surface_W_Rook = NULL;
-                surface_W_Rook = SDL_LoadBMP("W_Rook.bmp");
+                surface_W_Rook = SDL_LoadBMP("addons/pieces/W_Rook.bmp");
                 SDL_Texture* W_Rook = SDL_CreateTextureFromSurface(renderer, surface_W_Rook);
                 SDL_RenderCopy(renderer, W_Rook, NULL, &blocs[i][j]);
 
@@ -347,7 +347,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -5) //Reine noir
             {
                 SDL_Surface *surface_B_Queen = NULL;
-                surface_B_Queen = SDL_LoadBMP("B_Queen.bmp");
+                surface_B_Queen = SDL_LoadBMP("addons/pieces/B_Queen.bmp");
                 SDL_Texture* B_Queen = SDL_CreateTextureFromSurface(renderer, surface_B_Queen);
                 SDL_RenderCopy(renderer, B_Queen, NULL, &blocs[i][j]);
 
@@ -357,7 +357,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == 5)//Reine blanc
             {
                 SDL_Surface *surface_W_Queen = NULL;
-                surface_W_Queen = SDL_LoadBMP("W_Queen.bmp");
+                surface_W_Queen = SDL_LoadBMP("addons/pieces/W_Queen.bmp");
                 SDL_Texture* W_Queen = SDL_CreateTextureFromSurface(renderer, surface_W_Queen);
                 SDL_RenderCopy(renderer, W_Queen, NULL, &blocs[i][j]);
 
@@ -367,7 +367,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == -6) //Roi noir
             {
                 SDL_Surface *surface_B_King = NULL;
-                surface_B_King = SDL_LoadBMP("B_King.bmp");
+                surface_B_King = SDL_LoadBMP("addons/pieces/B_King.bmp");
                 SDL_Texture* B_King = SDL_CreateTextureFromSurface(renderer, surface_B_King);
                 SDL_RenderCopy(renderer, B_King, NULL, &blocs[i][j]);
 
@@ -377,7 +377,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             if(plateau[i][j] == 6)//Roi blanc
             {
                 SDL_Surface *surface_W_King = NULL;
-                surface_W_King = SDL_LoadBMP("W_King.bmp");
+                surface_W_King = SDL_LoadBMP("addons/pieces/W_King.bmp");
                 SDL_Texture* W_King = SDL_CreateTextureFromSurface(renderer, surface_W_King);
                 SDL_RenderCopy(renderer, W_King, NULL, &blocs[i][j]);
 
@@ -389,9 +389,9 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
     /*
     //Version Simple dimension
-    SDL_Rect cases[64]; // Déclaration du tableau contenant les cases blanches
+    SDL_Rect cases[64]; // Dï¿½claration du tableau contenant les cases blanches
     SDL_Point ligne_depart,ligne_arrivee;
-    // Déclaration du point de départ et du point d'arrivée d'une ligne
+    // Dï¿½claration du point de dï¿½part et du point d'arrivï¿½e d'une ligne
 
 
     SDL_Rect damier = {350, 0, 800, 800};
@@ -482,7 +482,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
     //SDL_FreeSurface(surface_B_Pawn);
 
 
-    //Boucle infinie jusqu'à fermeture
+    //Boucle infinie jusqu'ï¿½ fermeture
     SDL_Event events;
 
     int continuer = 1;
@@ -523,7 +523,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
     //printf("%c",Couleur_Joueur);
 
-    //printf("c'est passé");
+    //printf("c'est passï¿½");
 
 
     int i,j,k;
@@ -620,7 +620,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                         if((x > blocs[i][j].x) && (x < (blocs[i][j].x + blocs[i][j].w)) && (y > blocs[i][j].y) && (y < (blocs[i][j].y + blocs[i][j].h)))
                                         {
                                             //case_depart = blocs[x][y];
-                                            //Il faut aussi parcourir plateau pour récupérer le type de piece sur le bloc
+                                            //Il faut aussi parcourir plateau pour rï¿½cupï¿½rer le type de piece sur le bloc
                                             valeur = plateau[i][j];
                                             if(valeur > 0)
                                             {
@@ -632,7 +632,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                                 couleur = 'N';
                                                 printf("%c\n",couleur);
                                             }
-                                            if(valeur != 0 && couleur == Couleur_Joueur)//vérification qu'il y ai une pièce sur la case et qu'elle soit de la même couleur que le joueur
+                                            if(valeur != 0 && couleur == Couleur_Joueur)//vï¿½rification qu'il y ai une piï¿½ce sur la case et qu'elle soit de la mï¿½me couleur que le joueur
                                             {
                                                 i_depart = i;
                                                 j_depart = j;
@@ -666,7 +666,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                                             //printf("%d\n", tableau_highlighting[i][j]);
                                                             //printf("%d\n", i);
                                                             //printf("%d\n", j);
-                                                            //On recupère soit la valeur blocs soit sa ligne et sa colonne
+                                                            //On recupï¿½re soit la valeur blocs soit sa ligne et sa colonne
                                                             SDL_SetRenderDrawColor(renderer, vert.r, vert.g, vert.b, vert.a);
                                                             SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
                                                             SDL_RenderFillRect(renderer, &blocs[i][j]);
@@ -686,7 +686,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                         }
                         else if(nb_click == 1)
                         {
-                            printf("deuxième clic\n");
+                            printf("deuxiÃ¨me clic\n");
                             //printf("Position click: (%d, %d)\n", x, y);
 
                             if((x > rect_zone_jeu.x) && (x < (rect_zone_jeu.x + rect_zone_jeu.w)) && (y > rect_zone_jeu.y) && (y < (rect_zone_jeu.y + rect_zone_jeu.h)))
@@ -703,9 +703,9 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                             //printf("Coordonnees depart: (%d, %d)\n", i_depart,j_depart);
                                             //printf("Coordonnees arrivee: (%d, %d)\n", i_arrivee,j_arrivee);
 
-                                            if(tableau_highlighting[i][j] == 1) //vérification que la case cliquée soit highlight
+                                            if(tableau_highlighting[i][j] == 1) //vï¿½rification que la case cliquï¿½e soit highlight
                                             {
-                                                plateau[i_depart][j_depart] = 0; //efface la pièce de sa position de départ
+                                                plateau[i_depart][j_depart] = 0; //efface la piï¿½ce de sa position de dï¿½part
 
                                                 if(plateau[i_arrivee][j_arrivee] > 0)
                                                 {
@@ -812,7 +812,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -1) //Pion noir
                                     {
                                         SDL_Surface *surface_B_Pawn = NULL;
-                                        surface_B_Pawn = SDL_LoadBMP("B_Pawn.bmp");
+                                        surface_B_Pawn = SDL_LoadBMP("addons/pieces/B_Pawn.bmp");
                                         SDL_Texture* B_Pawn = SDL_CreateTextureFromSurface(renderer, surface_B_Pawn);
                                         SDL_RenderCopy(renderer, B_Pawn, NULL, &blocs[i][j]);
 
@@ -822,7 +822,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == 1)//Pion blanc
                                     {
                                         SDL_Surface *surface_W_Pawn = NULL;
-                                        surface_W_Pawn = SDL_LoadBMP("W_Pawn.bmp");
+                                        surface_W_Pawn = SDL_LoadBMP("addons/pieces/W_Pawn.bmp");
                                         SDL_Texture* W_Pawn = SDL_CreateTextureFromSurface(renderer, surface_W_Pawn);
                                         SDL_RenderCopy(renderer, W_Pawn, NULL, &blocs[i][j]);
 
@@ -832,7 +832,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -2) //Fou noir
                                     {
                                         SDL_Surface *surface_B_Bishop = NULL;
-                                        surface_B_Bishop = SDL_LoadBMP("B_Bishop.bmp");
+                                        surface_B_Bishop = SDL_LoadBMP("addons/pieces/B_Bishop.bmp");
                                         SDL_Texture* B_Bishop = SDL_CreateTextureFromSurface(renderer, surface_B_Bishop);
                                         SDL_RenderCopy(renderer, B_Bishop, NULL, &blocs[i][j]);
 
@@ -842,7 +842,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j]== 2)//Fou blanc
                                     {
                                         SDL_Surface *surface_W_Bishop = NULL;
-                                        surface_W_Bishop = SDL_LoadBMP("W_Bishop.bmp");
+                                        surface_W_Bishop = SDL_LoadBMP("addons/pieces/W_Bishop.bmp");
                                         SDL_Texture* W_Bishop = SDL_CreateTextureFromSurface(renderer, surface_W_Bishop);
                                         SDL_RenderCopy(renderer, W_Bishop, NULL, &blocs[i][j]);
 
@@ -852,7 +852,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -3) //Cavalier noir
                                     {
                                         SDL_Surface *surface_B_Knight = NULL;
-                                        surface_B_Knight = SDL_LoadBMP("B_Knight.bmp");
+                                        surface_B_Knight = SDL_LoadBMP("addons/pieces/B_Knight.bmp");
                                         SDL_Texture* B_Knight = SDL_CreateTextureFromSurface(renderer, surface_B_Knight);
                                         SDL_RenderCopy(renderer, B_Knight, NULL, &blocs[i][j]);
 
@@ -862,7 +862,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == 3)//Cavalier blanc
                                     {
                                         SDL_Surface *surface_W_Knight = NULL;
-                                        surface_W_Knight = SDL_LoadBMP("W_Knight.bmp");
+                                        surface_W_Knight = SDL_LoadBMP("addons/pieces/W_Knight.bmp");
                                         SDL_Texture* W_Knight = SDL_CreateTextureFromSurface(renderer, surface_W_Knight);
                                         SDL_RenderCopy(renderer, W_Knight, NULL, &blocs[i][j]);
 
@@ -872,7 +872,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -4) //Tour noir
                                     {
                                         SDL_Surface *surface_B_Rook = NULL;
-                                        surface_B_Rook = SDL_LoadBMP("B_Rook.bmp");
+                                        surface_B_Rook = SDL_LoadBMP("addons/pieces/B_Rook.bmp");
                                         SDL_Texture* B_Rook = SDL_CreateTextureFromSurface(renderer, surface_B_Rook);
                                         SDL_RenderCopy(renderer, B_Rook, NULL, &blocs[i][j]);
 
@@ -882,7 +882,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == 4)//Tour blanc
                                     {
                                         SDL_Surface *surface_W_Rook = NULL;
-                                        surface_W_Rook = SDL_LoadBMP("W_Rook.bmp");
+                                        surface_W_Rook = SDL_LoadBMP("addons/pieces/W_Rook.bmp");
                                         SDL_Texture* W_Rook = SDL_CreateTextureFromSurface(renderer, surface_W_Rook);
                                         SDL_RenderCopy(renderer, W_Rook, NULL, &blocs[i][j]);
 
@@ -892,7 +892,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -5) //Reine noir
                                     {
                                         SDL_Surface *surface_B_Queen = NULL;
-                                        surface_B_Queen = SDL_LoadBMP("B_Queen.bmp");
+                                        surface_B_Queen = SDL_LoadBMP("addons/pieces/B_Queen.bmp");
                                         SDL_Texture* B_Queen = SDL_CreateTextureFromSurface(renderer, surface_B_Queen);
                                         SDL_RenderCopy(renderer, B_Queen, NULL, &blocs[i][j]);
 
@@ -902,7 +902,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == 5)//Reine blanc
                                     {
                                         SDL_Surface *surface_W_Queen = NULL;
-                                        surface_W_Queen = SDL_LoadBMP("W_Queen.bmp");
+                                        surface_W_Queen = SDL_LoadBMP("addons/pieces/W_Queen.bmp");
                                         SDL_Texture* W_Queen = SDL_CreateTextureFromSurface(renderer, surface_W_Queen);
                                         SDL_RenderCopy(renderer, W_Queen, NULL, &blocs[i][j]);
 
@@ -912,7 +912,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == -6) //Roi noir
                                     {
                                         SDL_Surface *surface_B_King = NULL;
-                                        surface_B_King = SDL_LoadBMP("B_King.bmp");
+                                        surface_B_King = SDL_LoadBMP("addons/pieces/B_King.bmp");
                                         SDL_Texture* B_King = SDL_CreateTextureFromSurface(renderer, surface_B_King);
                                         SDL_RenderCopy(renderer, B_King, NULL, &blocs[i][j]);
 
@@ -922,7 +922,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(plateau[i][j] == 6)//Roi blanc
                                     {
                                         SDL_Surface *surface_W_King = NULL;
-                                        surface_W_King = SDL_LoadBMP("W_King.bmp");
+                                        surface_W_King = SDL_LoadBMP("addons/pieces/W_King.bmp");
                                         SDL_Texture* W_King = SDL_CreateTextureFromSurface(renderer, surface_W_King);
                                         SDL_RenderCopy(renderer, W_King, NULL, &blocs[i][j]);
 
@@ -968,7 +968,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -1) //Pion noir
                                     {
                                         SDL_Surface *surface_B_Pawn = NULL;
-                                        surface_B_Pawn = SDL_LoadBMP("B_Pawn.bmp");
+                                        surface_B_Pawn = SDL_LoadBMP("addons/pieces/B_Pawn.bmp");
                                         SDL_Texture* B_Pawn = SDL_CreateTextureFromSurface(renderer, surface_B_Pawn);
                                         SDL_RenderCopy(renderer, B_Pawn, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -978,7 +978,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j] == 1)//Pion blanc
                                     {
                                         SDL_Surface *surface_W_Pawn = NULL;
-                                        surface_W_Pawn = SDL_LoadBMP("W_Pawn.bmp");
+                                        surface_W_Pawn = SDL_LoadBMP("addons/pieces/W_Pawn.bmp");
                                         SDL_Texture* W_Pawn = SDL_CreateTextureFromSurface(renderer, surface_W_Pawn);
                                         SDL_RenderCopy(renderer, W_Pawn, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -988,7 +988,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -2) //Fou noir
                                     {
                                         SDL_Surface *surface_B_Bishop = NULL;
-                                        surface_B_Bishop = SDL_LoadBMP("B_Bishop.bmp");
+                                        surface_B_Bishop = SDL_LoadBMP("addons/pieces/B_Bishop.bmp");
                                         SDL_Texture* B_Bishop = SDL_CreateTextureFromSurface(renderer, surface_B_Bishop);
                                         SDL_RenderCopy(renderer, B_Bishop, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -998,7 +998,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j]== 2)//Fou blanc
                                     {
                                         SDL_Surface *surface_W_Bishop = NULL;
-                                        surface_W_Bishop = SDL_LoadBMP("W_Bishop.bmp");
+                                        surface_W_Bishop = SDL_LoadBMP("addons/pieces/W_Bishop.bmp");
                                         SDL_Texture* W_Bishop = SDL_CreateTextureFromSurface(renderer, surface_W_Bishop);
                                         SDL_RenderCopy(renderer, W_Bishop, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -1008,7 +1008,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -3) //Cavalier noir
                                     {
                                         SDL_Surface *surface_B_Knight = NULL;
-                                        surface_B_Knight = SDL_LoadBMP("B_Knight.bmp");
+                                        surface_B_Knight = SDL_LoadBMP("addons/pieces/B_Knight.bmp");
                                         SDL_Texture* B_Knight = SDL_CreateTextureFromSurface(renderer, surface_B_Knight);
                                         SDL_RenderCopy(renderer, B_Knight, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -1018,7 +1018,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j] == 3)//Cavalier blanc
                                     {
                                         SDL_Surface *surface_W_Knight = NULL;
-                                        surface_W_Knight = SDL_LoadBMP("W_Knight.bmp");
+                                        surface_W_Knight = SDL_LoadBMP("addons/pieces/W_Knight.bmp");
                                         SDL_Texture* W_Knight = SDL_CreateTextureFromSurface(renderer, surface_W_Knight);
                                         SDL_RenderCopy(renderer, W_Knight, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -1028,7 +1028,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -4) //Tour noir
                                     {
                                         SDL_Surface *surface_B_Rook = NULL;
-                                        surface_B_Rook = SDL_LoadBMP("B_Rook.bmp");
+                                        surface_B_Rook = SDL_LoadBMP("addons/pieces/B_Rook.bmp");
                                         SDL_Texture* B_Rook = SDL_CreateTextureFromSurface(renderer, surface_B_Rook);
                                         SDL_RenderCopy(renderer, B_Rook, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -1038,7 +1038,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j] == 4)//Tour blanc
                                     {
                                         SDL_Surface *surface_W_Rook = NULL;
-                                        surface_W_Rook = SDL_LoadBMP("W_Rook.bmp");
+                                        surface_W_Rook = SDL_LoadBMP("addons/pieces/W_Rook.bmp");
                                         SDL_Texture* W_Rook = SDL_CreateTextureFromSurface(renderer, surface_W_Rook);
                                         SDL_RenderCopy(renderer, W_Rook, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -1048,7 +1048,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -5) //Reine noir
                                     {
                                         SDL_Surface *surface_B_Queen = NULL;
-                                        surface_B_Queen = SDL_LoadBMP("B_Queen.bmp");
+                                        surface_B_Queen = SDL_LoadBMP("addons/pieces/B_Queen.bmp");
                                         SDL_Texture* B_Queen = SDL_CreateTextureFromSurface(renderer, surface_B_Queen);
                                         SDL_RenderCopy(renderer, B_Queen, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -1058,7 +1058,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j] == 5)//Reine blanc
                                     {
                                         SDL_Surface *surface_W_Queen = NULL;
-                                        surface_W_Queen = SDL_LoadBMP("W_Queen.bmp");
+                                        surface_W_Queen = SDL_LoadBMP("addons/pieces/W_Queen.bmp");
                                         SDL_Texture* W_Queen = SDL_CreateTextureFromSurface(renderer, surface_W_Queen);
                                         SDL_RenderCopy(renderer, W_Queen, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -1068,7 +1068,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_noires_eliminees[i][j] == -6) //Roi noir
                                     {
                                         SDL_Surface *surface_B_King = NULL;
-                                        surface_B_King = SDL_LoadBMP("B_King.bmp");
+                                        surface_B_King = SDL_LoadBMP("addons/pieces/B_King.bmp");
                                         SDL_Texture* B_King = SDL_CreateTextureFromSurface(renderer, surface_B_King);
                                         SDL_RenderCopy(renderer, B_King, NULL, &rect_pieces_noires_eliminees[i][j]);
 
@@ -1078,7 +1078,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     if(tab_pieces_blanches_eliminees[i][j] == 6)//Roi blanc
                                     {
                                         SDL_Surface *surface_W_King = NULL;
-                                        surface_W_King = SDL_LoadBMP("W_King.bmp");
+                                        surface_W_King = SDL_LoadBMP("addons/pieces/W_King.bmp");
                                         SDL_Texture* W_King = SDL_CreateTextureFromSurface(renderer, surface_W_King);
                                         SDL_RenderCopy(renderer, W_King, NULL, &rect_pieces_blanches_eliminees[i][j]);
 
@@ -1106,7 +1106,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                         x = events.button.x;
                         y = events.button.y;
 
-                        //printf("deuxième clic");
+                        //printf("deuxiï¿½me clic");
 
                         if((x > rect_zone_jeu.x) && (x < (rect_zone_jeu.x + rect_zone_jeu.w)) && (y > rect_zone_jeu.y) && (y < (rect_zone_jeu.y + rect_zone_jeu.h)))
                         {
@@ -1116,7 +1116,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                 {
                                     if((x > blocs[i][j].x) && (x < (blocs[i][j].x + blocs[i][j].w)) && (y > blocs[i][j].y) && (y < (blocs[i][j].y + blocs[i][j].h)))
                                     {
-                                        printf("deuxième clic");
+                                        printf("deuxiï¿½me clic");
                                         printf(i,j);
 
 
@@ -1126,7 +1126,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                             if(plateau[i][j] != 0)
                                             {
                                                 //valeur_pieces_eliminees = plateau[i][j];
-                                                //parcours du tableau pieces éliminées
+                                                //parcours du tableau pieces ï¿½liminï¿½es
                                                 //tab_pieces_blanches_eliminees[][] = valeur_pieces_eliminees;
                                                 //plateau[i][j] = valeur;
 
@@ -1135,7 +1135,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                             {
                                                 //plateau[i][j] = valeur;
                                             }
-                                            //On passe à tour+1
+                                            //On passe ï¿½ tour+1
                                             tour++;
                                         }
                                         if(tableau_highlight[i][j] == 0)
@@ -1206,7 +1206,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                         if(tableau_mouvement_IA[i][j]==1)
                         {
                             IA_deplacement_possible++;
-                            //récup les position i-j de chaque 1
+                            //rï¿½cup les position i-j de chaque 1
                         }
                     }
                     printf("\n");
@@ -1269,8 +1269,8 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
                     i_arrive = tableau_mouvement_lignes[num_hasard];
                     j_arrive = tableau_mouvement_colonnes[num_hasard];
-                    printf("i arrivée :  %i\n", i_arrive);
-                    printf("j arrivée :  %i\n", j_arrive);
+                    printf("i arrivÃ©e :  %i\n", i_arrive);
+                    printf("j arrivÃ©e :  %i\n", j_arrive);
 
                     for(int i=0; i < 8; i++)
                     {
@@ -1285,7 +1285,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
                     if(Couleur_Joueur=='B')
                     {
-                        tableau_mouvement_temp = verif_transformation_IA(tableau_mouvement_temp, 'N');//à retravailler car marche pas trop
+                        tableau_mouvement_temp = verif_transformation_IA(tableau_mouvement_temp, 'N');//ï¿½ retravailler car marche pas trop
                     }
                     if(Couleur_Joueur=='N')
                     {
@@ -1338,7 +1338,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                 plateau[i][j] = tableau_mouvement_temp[i][j];
                             }
                         }
-                        test_deplacement+=1000;//pour être sûr de sortir de la boucle 'while(test_deplacement<=100);'
+                        test_deplacement+=1000;//pour ï¿½tre sï¿½r de sortir de la boucle 'while(test_deplacement<=100);'
                     }
                     if(MouvEchec==1)
                     {
@@ -1389,7 +1389,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -1) //Pion noir
                     {
                         SDL_Surface *surface_B_Pawn = NULL;
-                        surface_B_Pawn = SDL_LoadBMP("B_Pawn.bmp");
+                        surface_B_Pawn = SDL_LoadBMP("addons/pieces/B_Pawn.bmp");
                         SDL_Texture* B_Pawn = SDL_CreateTextureFromSurface(renderer, surface_B_Pawn);
                         SDL_RenderCopy(renderer, B_Pawn, NULL, &blocs[i][j]);
 
@@ -1399,7 +1399,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == 1)//Pion blanc
                     {
                         SDL_Surface *surface_W_Pawn = NULL;
-                        surface_W_Pawn = SDL_LoadBMP("W_Pawn.bmp");
+                        surface_W_Pawn = SDL_LoadBMP("addons/pieces/W_Pawn.bmp");
                         SDL_Texture* W_Pawn = SDL_CreateTextureFromSurface(renderer, surface_W_Pawn);
                         SDL_RenderCopy(renderer, W_Pawn, NULL, &blocs[i][j]);
 
@@ -1409,7 +1409,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -2) //Fou noir
                     {
                         SDL_Surface *surface_B_Bishop = NULL;
-                        surface_B_Bishop = SDL_LoadBMP("B_Bishop.bmp");
+                        surface_B_Bishop = SDL_LoadBMP("addons/pieces/B_Bishop.bmp");
                         SDL_Texture* B_Bishop = SDL_CreateTextureFromSurface(renderer, surface_B_Bishop);
                         SDL_RenderCopy(renderer, B_Bishop, NULL, &blocs[i][j]);
 
@@ -1419,7 +1419,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j]== 2)//Fou blanc
                     {
                         SDL_Surface *surface_W_Bishop = NULL;
-                        surface_W_Bishop = SDL_LoadBMP("W_Bishop.bmp");
+                        surface_W_Bishop = SDL_LoadBMP("addons/pieces/W_Bishop.bmp");
                         SDL_Texture* W_Bishop = SDL_CreateTextureFromSurface(renderer, surface_W_Bishop);
                         SDL_RenderCopy(renderer, W_Bishop, NULL, &blocs[i][j]);
 
@@ -1429,7 +1429,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -3) //Cavalier noir
                     {
                         SDL_Surface *surface_B_Knight = NULL;
-                        surface_B_Knight = SDL_LoadBMP("B_Knight.bmp");
+                        surface_B_Knight = SDL_LoadBMP("addons/pieces/B_Knight.bmp");
                         SDL_Texture* B_Knight = SDL_CreateTextureFromSurface(renderer, surface_B_Knight);
                         SDL_RenderCopy(renderer, B_Knight, NULL, &blocs[i][j]);
 
@@ -1439,7 +1439,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == 3)//Cavalier blanc
                     {
                         SDL_Surface *surface_W_Knight = NULL;
-                        surface_W_Knight = SDL_LoadBMP("W_Knight.bmp");
+                        surface_W_Knight = SDL_LoadBMP("addons/pieces/W_Knight.bmp");
                         SDL_Texture* W_Knight = SDL_CreateTextureFromSurface(renderer, surface_W_Knight);
                         SDL_RenderCopy(renderer, W_Knight, NULL, &blocs[i][j]);
 
@@ -1449,7 +1449,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -4) //Tour noir
                     {
                         SDL_Surface *surface_B_Rook = NULL;
-                        surface_B_Rook = SDL_LoadBMP("B_Rook.bmp");
+                        surface_B_Rook = SDL_LoadBMP("addons/pieces/B_Rook.bmp");
                         SDL_Texture* B_Rook = SDL_CreateTextureFromSurface(renderer, surface_B_Rook);
                         SDL_RenderCopy(renderer, B_Rook, NULL, &blocs[i][j]);
 
@@ -1459,7 +1459,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == 4)//Tour blanc
                     {
                         SDL_Surface *surface_W_Rook = NULL;
-                        surface_W_Rook = SDL_LoadBMP("W_Rook.bmp");
+                        surface_W_Rook = SDL_LoadBMP("addons/pieces/W_Rook.bmp");
                         SDL_Texture* W_Rook = SDL_CreateTextureFromSurface(renderer, surface_W_Rook);
                         SDL_RenderCopy(renderer, W_Rook, NULL, &blocs[i][j]);
 
@@ -1469,7 +1469,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -5) //Reine noir
                     {
                         SDL_Surface *surface_B_Queen = NULL;
-                        surface_B_Queen = SDL_LoadBMP("B_Queen.bmp");
+                        surface_B_Queen = SDL_LoadBMP("addons/pieces/B_Queen.bmp");
                         SDL_Texture* B_Queen = SDL_CreateTextureFromSurface(renderer, surface_B_Queen);
                         SDL_RenderCopy(renderer, B_Queen, NULL, &blocs[i][j]);
 
@@ -1479,7 +1479,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == 5)//Reine blanc
                     {
                         SDL_Surface *surface_W_Queen = NULL;
-                        surface_W_Queen = SDL_LoadBMP("W_Queen.bmp");
+                        surface_W_Queen = SDL_LoadBMP("addons/pieces/W_Queen.bmp");
                         SDL_Texture* W_Queen = SDL_CreateTextureFromSurface(renderer, surface_W_Queen);
                         SDL_RenderCopy(renderer, W_Queen, NULL, &blocs[i][j]);
 
@@ -1489,7 +1489,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == -6) //Roi noir
                     {
                         SDL_Surface *surface_B_King = NULL;
-                        surface_B_King = SDL_LoadBMP("B_King.bmp");
+                        surface_B_King = SDL_LoadBMP("addons/pieces/B_King.bmp");
                         SDL_Texture* B_King = SDL_CreateTextureFromSurface(renderer, surface_B_King);
                         SDL_RenderCopy(renderer, B_King, NULL, &blocs[i][j]);
 
@@ -1499,7 +1499,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                     if(plateau[i][j] == 6)//Roi blanc
                     {
                         SDL_Surface *surface_W_King = NULL;
-                        surface_W_King = SDL_LoadBMP("W_King.bmp");
+                        surface_W_King = SDL_LoadBMP("addons/pieces/W_King.bmp");
                         SDL_Texture* W_King = SDL_CreateTextureFromSurface(renderer, surface_W_King);
                         SDL_RenderCopy(renderer, W_King, NULL, &blocs[i][j]);
 
@@ -1553,7 +1553,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                 if((x > blocs[i][j].x) && (x < (blocs[i][j].x + blocs[i][j].w)) && (y > blocs[i][j].y) && (y < (blocs[i][j].y + blocs[i][j].h)))
                                 {
                                     //case_depart = blocs[x][y];
-                                    //Il faut aussi parcourir plateau pour récupérer le type de piece sur le bloc
+                                    //Il faut aussi parcourir plateau pour rï¿½cupï¿½rer le type de piece sur le bloc
                                     valeur = plateau[i][j];
                                     if(valeur > 0)
                                     {
@@ -1563,7 +1563,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                     {
                                         couleur = "noir";
                                     }
-                                    if(valeur != 0 && couleur == Couleur_Joueur);//vérification qu'il y ai une pièce sur la case et qu'elle soit de la même couleur que le joueur
+                                    if(valeur != 0 && couleur == Couleur_Joueur);//vï¿½rification qu'il y ai une piï¿½ce sur la case et qu'elle soit de la mï¿½me couleur que le joueur
                                     {
                                         i_depart = i;
                                         j_depart = j;
@@ -1597,7 +1597,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
                                         if(plateau[i][j] != 0)
                                         {
                                             valeur_pieces_eliminees = plateau[i][j];
-                                            //parcours du tableau pieces éliminées
+                                            //parcours du tableau pieces ï¿½liminï¿½es
                                             tableau[][] = valeur_pieces_eliminees;
                                             plateau[i][j] = valeur;
                                         }
@@ -1642,7 +1642,7 @@ void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Text
 
     SDL_Surface *ecran = NULL, *texte = NULL, *fond = NULL, *surface = NULL, *image_fond = NULL;
 
-    image_fond = SDL_LoadBMP("echecs.bmp");
+    image_fond = SDL_LoadBMP("addons/images/echecs.bmp");
 
     SDL_Color orange = {255, 127, 40, 255};
     SDL_Color noir = {0, 0, 0, 255};
@@ -1727,7 +1727,7 @@ void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Text
 
 */
 
-    //Boucle infinie jusqu'à fermeture
+    //Boucle infinie jusqu'ï¿½ fermeture
     SDL_Event events;
     int continuer = 1;
     //bool quit = false;
@@ -1789,7 +1789,7 @@ void affichage_highlight(SDL_Renderer *renderer, int **tableau_highlighting, SDL
         {
             if(tableau_highlighting[i][j] == 1)
             {
-                //On recupère soit la valeur blocs soit sa ligne et sa colonne
+                //On recupï¿½re soit la valeur blocs soit sa ligne et sa colonne
                 SDL_SetRenderDrawColor(renderer, vert.r, vert.g, vert.b, vert.a);
                 SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
                 SDL_RenderFillRect(renderer, &blocs[i][j]);

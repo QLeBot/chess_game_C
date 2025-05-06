@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <stdbool.h>
 #include "initialisation.h"
 
@@ -20,7 +20,7 @@ void initialisation_blanc(int **plateau)
     {
         for (b=0;b<8;b++)
         {
-            plateau[a][b]=0;//Remise à zero de l'echiquier
+            plateau[a][b]=0;//Remise ï¿½ zero de l'echiquier
             //printf(plateau[a][b]);
         }
     }
@@ -61,7 +61,7 @@ void initialisation_noir(int **plateau)
         {
             for (b=0;b<8;b++)
             {
-                plateau[a][b]=0;//Remise à zero de l'echiquier
+                plateau[a][b]=0;//Remise ï¿½ zero de l'echiquier
             }
         }
 

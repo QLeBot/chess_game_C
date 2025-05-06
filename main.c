@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "SDL2/SDL.h"
+#include <SDL.h>
 #include "interface.h"
 
 //void jeu(window, renderer, couleur);
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     SDL_Color noir = {0, 0, 0, 255};
     SDL_Color blanc = {255,255,255,255};
 
-    surface = SDL_LoadBMP("echecs.bmp");
+    surface = SDL_LoadBMP("addons/images/echecs.bmp");
     //SDL_Rect position;
 
     int statut = EXIT_FAILURE;

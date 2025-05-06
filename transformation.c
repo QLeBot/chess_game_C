@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "SDL2/SDL.h"
+#include <SDL.h>
 #include <stdbool.h>
 #include "transformation.h"
 #include "pieces.h"
@@ -15,10 +15,10 @@ int transfo_blanc(int **plateau, int ligne, int colonne)
     SDL_Surface *image_tour_blanche = NULL;
     SDL_Surface *image_cavalier_blanc = NULL;
     SDL_Surface *image_fou_blanc = NULL;
-    image_reine_blanche = SDL_LoadBMP("W_Queen.bmp");
-    image_tour_blanche = SDL_LoadBMP("W_Rook.bmp");
-    image_cavalier_blanc = SDL_LoadBMP("W_Knight.bmp");
-    image_fou_blanc = SDL_LoadBMP("W_Bishop.bmp");
+    image_reine_blanche = SDL_LoadBMP("addons/pieces/W_Queen.bmp");
+    image_tour_blanche = SDL_LoadBMP("addons/pieces/W_Rook.bmp");
+    image_cavalier_blanc = SDL_LoadBMP("addons/pieces/W_Knight.bmp");
+    image_fou_blanc = SDL_LoadBMP("addons/pieces/W_Bishop.bmp");
 
     SDL_Color noir = {0, 0, 0, 255};
     SDL_Color blanc = {255,255,255,255};
@@ -133,10 +133,10 @@ int transfo_noir(int **plateau, int ligne, int colonne)
     SDL_Surface *image_tour_noire = NULL;
     SDL_Surface *image_cavalier_noir = NULL;
     SDL_Surface *image_fou_noir = NULL;
-    image_reine_noire = SDL_LoadBMP("B_Queen.bmp");
-    image_tour_noire = SDL_LoadBMP("B_Rook.bmp");
-    image_cavalier_noir = SDL_LoadBMP("B_Knight.bmp");
-    image_fou_noir = SDL_LoadBMP("B_Bishop.bmp");
+    image_reine_noire = SDL_LoadBMP("addons/pieces/B_Queen.bmp");
+    image_tour_noire = SDL_LoadBMP("addons/pieces/B_Rook.bmp");
+    image_cavalier_noir = SDL_LoadBMP("addons/pieces/B_Knight.bmp");
+    image_fou_noir = SDL_LoadBMP("addons/pieces/B_Bishop.bmp");
 
     SDL_Color noir = {0, 0, 0, 255};
     SDL_Color blanc = {255,255,255,255};
