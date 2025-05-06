@@ -5,11 +5,11 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
 void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture);
 
-//void affichage(int **plateau, SDL_Window *window, SDL_Renderer *renderer);
+void affichage(int **plateau, SDL_Window *window, SDL_Renderer *renderer);
 
-//void affichage_pieces_eliminees(int valeur);
+void affichage_pieces_eliminees(int valeur);
 
-//void affichage_higlight(SDL_Renderer *renderer,int **tableau_highlighting, SDL_Rect **blocs);
+void affichage_higlight(SDL_Renderer *renderer,int **tableau_highlighting, SDL_Rect **blocs);
 
 
 #endif // INTERFACE_H_INCLUDED

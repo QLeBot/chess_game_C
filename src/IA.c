@@ -2,22 +2,13 @@
 #include <stdlib.h>
 #include <SDL.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "interface.h"
 #include "mouvements.h"
 #include "pieces.h"
 #include "IA.h"
-
-int nombre_random(int max)
-{
-    static int rand_is_seeded = 0;
-    if(!rand_is_seeded)
-    {
-        srand(time(NULL));
-        rand_is_seeded = 1;
-    }
-    return rand()%(max);
-}
+#include "utils.h"
 
 int **IA_blanc(int **plateau)
 {
@@ -100,7 +91,7 @@ int **IA_blanc(int **plateau)
     {
         tableau = Mouvements_Roi(plateau, ligne, colonne, 'B');
     }
-    depart_IA[3]=tableau;
+    depart_IA[3]=(int)((intptr_t)tableau);
     return depart_IA;
 }
 
@@ -154,21 +145,15 @@ int **IA_noir(int **plateau)
         {
             if(plateau[i][j] < 0)
             {
-                //printf("%d\n", o);
                 taille_tableau_pieces++;
                 tableau_pieces_lignes[taille_tableau_pieces] = i;
-                //printf("%d\n",tableau_pieces_lignes[o]);
                 tableau_pieces_colonnes[taille_tableau_pieces] = j;
-                //printf("%d\n",tableau_pieces_colonnes[o]);
                 tableau_pieces_valeurs[taille_tableau_pieces] = plateau[i][j];
-                //printf("%d\n",tableau_pieces_valeurs[o]);
             }
         }
     }
 
-    //printf("%i\n",taille_tableau_pieces);
     num_hasard = nombre_random(taille_tableau_pieces);
-    //printf("%i\n", num_hasard);
 
     ligne = tableau_pieces_lignes[num_hasard];
     colonne = tableau_pieces_colonnes[num_hasard];
@@ -204,7 +189,7 @@ int **IA_noir(int **plateau)
     {
         tableau = Mouvements_Roi(plateau, ligne, colonne, 'N');
     }
-    depart_IA[3] = tableau;
+    depart_IA[3] = (int)((intptr_t)tableau);
     return depart_IA;
 }
 

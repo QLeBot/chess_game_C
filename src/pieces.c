@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "SDL2/SDL.h"
-#include <stdbool.h>
+#include <SDL.h>
+#include "pieces.h"
 
 int pion_deja_bouge(int **plateau, int ligne, char Couleur, char Couleur_Joueur)
 {

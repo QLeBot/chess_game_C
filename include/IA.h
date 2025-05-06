@@ -4,5 +4,8 @@
 int **IA_blanc(int **plateau);
 int **IA_noir(int **plateau);
 
+//int *IA_blanc(int **plateau);
+//int *IA_noir(int **plateau);
+
 
 #endif //IA_H_INCLUDED
