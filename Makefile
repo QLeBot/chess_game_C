@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 SDL2_CFLAGS = $(shell sdl2-config --cflags)
-SDL2_LIBS = $(shell sdl2-config --libs)
+SDL2_LIBS = $(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image
 
 # Source and include directories
 SRC_DIR = src

@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <SDL.h>
-#include "interface.h"
+#include <SDL_ttf.h>
+#include <SDL_image.h>
+//#include "interface.h"
+#include "interface_2.h"
 
 //void jeu(window, renderer, couleur);
 
@@ -32,12 +35,13 @@ int main(int argc, char *argv[])
 
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
-    SDL_Surface *ecran = NULL, *texte = NULL, *fond = NULL, *surface = NULL;
+    SDL_Surface *display = NULL, *text = NULL, *background = NULL, *surface = NULL;
     SDL_Texture *texture = NULL, *tmp = NULL;
+    TTF_Font* g_font = NULL;
 
     SDL_Color orange = {255, 127, 40, 255};
-    SDL_Color noir = {0, 0, 0, 255};
-    SDL_Color blanc = {255,255,255,255};
+    SDL_Color black = {0, 0, 0, 255};
+    SDL_Color white = {255,255,255,255};
 
     surface = SDL_LoadBMP("src/addons/images/echecs.bmp");
     //SDL_Rect position;
@@ -48,6 +52,26 @@ int main(int argc, char *argv[])
     if(0 != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {
         fprintf(stderr, "Erreur SDL_Init : %s\n", SDL_GetError());
+        goto Quit;
+    }
+
+    // Initialize SDL_image
+    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
+    if(!(IMG_Init(imgFlags) & imgFlags)) {
+        fprintf(stderr, "Erreur IMG_Init : %s\n", IMG_GetError());
+        goto Quit;
+    }
+
+    // Initialize SDL_ttf
+    if(TTF_Init() == -1) {
+        fprintf(stderr, "Erreur TTF_Init : %s\n", TTF_GetError());
+        goto Quit;
+    }
+
+    // Load font
+    g_font = TTF_OpenFont("src/addons/fonts/demoness.otf", 24);
+    if(!g_font) {
+        fprintf(stderr, "Erreur TTF_OpenFont : %s\n", TTF_GetError());
         goto Quit;
     }
 
@@ -71,7 +95,7 @@ int main(int argc, char *argv[])
 
     if(NULL == surface)
     {
-        fprintf(stderr, "Erreur DSL_LoadBMP : %s", SDL_GetError());
+        fprintf(stderr, "Erreur IMG_Load : %s", IMG_GetError());
         goto Quit;
     }
 
@@ -93,7 +117,7 @@ int main(int argc, char *argv[])
     }
 
     //
-    if(0 != SDL_SetRenderDrawColor(renderer,  blanc.r, blanc.g, blanc.b, blanc.a))
+    if(0 != SDL_SetRenderDrawColor(renderer,  white.r, white.g, white.b, white.a))
     {
         fprintf(stderr, "Erreur SDL_SetRenderDrawColor : %s", SDL_GetError());
         goto Quit;
@@ -105,11 +129,16 @@ int main(int argc, char *argv[])
         goto Quit;
     }
 
-    menu(window, renderer, tmp, texture);
+    //menu(window, renderer, tmp, texture);
+    menu_alt(window, renderer, tmp, texture, g_font);
 
     statut = EXIT_SUCCESS;
 
 Quit:
+    if(g_font != NULL)
+        TTF_CloseFont(g_font);
+    TTF_Quit();
+    IMG_Quit();
     if(NULL != texture)
         SDL_DestroyTexture(texture);
     if(NULL != renderer)

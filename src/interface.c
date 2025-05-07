@@ -14,13 +14,24 @@
 #include "IA.h"
 #include "transformation.h"
 
+/*
+ * Function: abandonner
+ * Displays the defeat screen when a player surrenders
+ * Parameters:
+ *   window - Main game window
+ *   renderer - SDL renderer for drawing
+ *   tmp - Temporary texture
+ *   texture - Main game texture
+ */
 void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture)//défaite
 {
+    // Create defeat window and renderer
     SDL_Window *window_defaite = NULL;
     SDL_Renderer *renderer_defaite = NULL;
     window_defaite = SDL_CreateWindow("Ecran defaite", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 375, SDL_WINDOW_SHOWN);
     renderer_defaite = SDL_CreateRenderer(window_defaite, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+    // Load and display defeat image
     SDL_Surface *image_defaite = NULL;
     image_defaite = SDL_LoadBMP("src/addons/images/Defaite.bmp");
 
@@ -30,6 +41,7 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
     SDL_DestroyTexture(mon_image);
     SDL_FreeSurface(image_defaite);
 
+    // Load and display restart button
     SDL_Surface *image_recommencer = NULL;
     image_recommencer = SDL_LoadBMP("src/addons/images/Recommencer.bmp");
 
@@ -41,7 +53,7 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
 
     SDL_RenderPresent(renderer_defaite);
 
-    //Boucle infinie jusqu'à fermeture
+    // Event loop for defeat screen
     SDL_Event eventsA;
     int continuer = 1;
     int x, y;
@@ -72,6 +84,11 @@ void abandonner(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SD
     }//while
 }
 
+/*
+ * Function: victoire
+ * Displays the victory screen when a player wins
+ * Similar structure to abandonner but with victory image
+ */
 void victoire(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture)//victoire
 {
     SDL_Window *window_victoire = NULL;
@@ -128,9 +145,21 @@ void victoire(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_
     }//while
 }
 
+/*
+ * Function: jeu
+ * Main game function that handles the chess game logic and rendering
+ * Parameters:
+ *   window - Main game window
+ *   renderer - SDL renderer for drawing
+ *   tmp - Temporary texture
+ *   texture - Main game texture
+ *   plateau - 2D array representing the chess board
+ *   Couleur_Joueur - Player's color ('B' for white, 'N' for black)
+ */
 void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture, int **plateau, char Couleur_Joueur)
 {
     // Declare arrays
+    /*
     int **tableau_highlighting = NULL;
     int **tableau_mouvement_IA = NULL;
     int **tab_pieces_blanches_eliminees = NULL;
@@ -203,6 +232,7 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
             tab_pieces_noires_eliminees[i][j] = 0;
         }
     }
+    */
 
     //int statut = EXIT_FAILURE;
 
@@ -238,17 +268,19 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
     SDL_Surface *surface_abandon = NULL;
     surface_abandon = SDL_LoadBMP("src/addons/images/Abandonner.bmp");
 
+    // Initialize game colors
     SDL_Color orange = {255, 127, 40, 255};
     SDL_Color gris_clair = {204, 209, 209, 255};
     SDL_Color gris_fonce = {81, 90, 90, 255};
     SDL_Color noir = {0, 0, 0, 255};
     SDL_Color blanc = {255,255,255,255};
 
-    SDL_Rect rect_zone_blanc = {0, 0, 200, 600};
-    SDL_Rect rect_zone_noir = {1300, 0, 200, 600};
-    SDL_Rect rect_zone_jeu = {350, 0, 800, 800};
+    // Define game board zones
+    SDL_Rect rect_zone_blanc = {0, 0, 200, 600}; // Left side for captured white pieces
+    SDL_Rect rect_zone_noir = {1300, 0, 200, 600}; // Right side for captured black pieces
+    SDL_Rect rect_zone_jeu = {350, 0, 800, 800}; // Main game board
 
-    SDL_Rect rect_zone_abandon = {1300, 700, 200, 100};
+    SDL_Rect rect_zone_abandon = {1300, 700, 200, 100}; // Surrender button
 
     SDL_SetRenderDrawColor(renderer, blanc.r, blanc.g, blanc.b, blanc.a);
     SDL_RenderClear(renderer);
@@ -562,70 +594,73 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
 
     //Boucle infinie jusqu'à fermeture
     SDL_Event events;
-
+    
+    // Initialize game state variables
     int continuer = 1;
     //bool quit = false;
 
 
-
+    // Captured white pieces
     //int a,b,c;
-    //int **tab_pieces_blanches_eliminees;
-    // tab_pieces_blanches_eliminees = malloc(sizeof(int *) *4);
-    // for (int a=0; a<4; a++)
-    // {
-    //     tab_pieces_blanches_eliminees[a] = malloc(sizeof(int)*4);
-    // }
-    // for (int b=0; b<4; b++)
-    // {
-    //     for (int c=0; c<4; c++)
-    //     {
-    //         tab_pieces_blanches_eliminees[b][c]=0;
-    //     }
-    // }
-
+    int **tab_pieces_blanches_eliminees;
+    tab_pieces_blanches_eliminees = malloc(sizeof(int *) *4);
+    for (int a=0; a<4; a++)
+    {
+        tab_pieces_blanches_eliminees[a] = malloc(sizeof(int)*4);
+    }
+    for (int b=0; b<4; b++)
+    {
+        for (int c=0; c<4; c++)
+        {
+            tab_pieces_blanches_eliminees[b][c]=0;
+        }
+    }
+    
+    // Captured black pieces
     //int d,e,f;
-    // int **tab_pieces_noires_eliminees;
-    // tab_pieces_noires_eliminees = malloc(sizeof(int *) *4);
-    // for (int d=0;d<4;d++)
-    // {
-    //     tab_pieces_noires_eliminees[d] = malloc(sizeof(int)*4);
-    // }
-    // for (int e=0;e<4;e++)
-    // {
-    //     for (int f=0;f<4;f++)
-    //     {
-    //         tab_pieces_noires_eliminees[e][f]=0;
-    //     }
-    // }
+    int **tab_pieces_noires_eliminees;
+    tab_pieces_noires_eliminees = malloc(sizeof(int *) *4);
+    for (int d=0;d<4;d++)
+    {
+        tab_pieces_noires_eliminees[d] = malloc(sizeof(int)*4);
+    }
+    for (int e=0;e<4;e++)
+    {
+        for (int f=0;f<4;f++)
+        {
+            tab_pieces_noires_eliminees[e][f]=0;
+        }
+    }
 
 
     //printf("%c",Couleur_Joueur);
 
     //printf("c'est passé");
 
-
+    // Highlights possible moves
     int i,j,k;
-    // int **tableau_highlighting;
-    // tableau_highlighting = malloc(sizeof(int *) *8);
-    // for (i=0;i<8;i++)
-    // {
-    //     tableau_highlighting[i] = malloc(sizeof(int)*8);
-    // }
-    // for (j=0;j<8;j++)
-    // {
-    //     for (k=0;k<8;k++)
-    //     {
-    //         tableau_highlighting[j][k]=0;
-    //     }
-    // }
-
+    int **tableau_highlighting;
+    tableau_highlighting = malloc(sizeof(int *) *8);
+    for (i=0;i<8;i++)
+    {
+        tableau_highlighting[i] = malloc(sizeof(int)*8);
+    }
+    for (j=0;j<8;j++)
+    {
+        for (k=0;k<8;k++)
+        {
+            tableau_highlighting[j][k]=0;
+        }
+    }
+    
+    // AI movement possibilities
     int l;
-    // int **tableau_mouvement_IA; //pour tester les mouvements de l'IA
-    // tableau_mouvement_IA = malloc(sizeof(int *) *8);
-    // for (l=0;l<8;l++)
-    // {
-    //     tableau_mouvement_IA[l] = malloc(sizeof(int)*8);
-    // }
+    int **tableau_mouvement_IA; //pour tester les mouvements de l'IA
+    tableau_mouvement_IA = malloc(sizeof(int *) *8);
+    for (l=0;l<8;l++)
+    {
+        tableau_mouvement_IA[l] = malloc(sizeof(int)*8);
+    }
 
     int test_deplacement;
     int IA_deplacement_possible;
@@ -1775,11 +1810,14 @@ void jeu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Textu
     }
 }
 
+/*
+ * Function: menu
+ * Displays the main menu where players can choose their color
+ */
 void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Texture *texture)
 {
+    // Initialize menu variables
     int x = 0, y = 0;
-
-
     int **plateau;
     plateau = malloc(sizeof(int *) *8);
     for(int i=0; i<8; i++)
@@ -1790,6 +1828,7 @@ void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Text
     int joueur_blanc = 0;
     int joueur_noir = 1;
 
+    // Load and display menu background
     SDL_Surface *ecran = NULL, *texte = NULL, *fond = NULL, *surface = NULL, *image_fond = NULL;
 
     image_fond = SDL_LoadBMP("src/addons/images/echecs.bmp");
@@ -1888,7 +1927,7 @@ void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Text
 
 */
 
-    //Boucle infinie jusqu'à fermeture
+    // Menu event loop
     SDL_Event events;
     int continuer = 1;
     //bool quit = false;
@@ -1939,7 +1978,10 @@ void menu(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *tmp, SDL_Text
 
 }
 
-
+/*
+ * Function: affichage_highlight
+ * Highlights possible moves for a selected piece
+ */
 void affichage_highlight(SDL_Renderer *renderer, int **tableau_highlighting, SDL_Rect **blocs)
 {
     SDL_Color vert = {59,234,120,128};
